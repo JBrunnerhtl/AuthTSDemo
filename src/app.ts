@@ -3,6 +3,7 @@ import express from "express";
 import swaggerUi from "swagger-ui-express"
 import {specs} from "../swaggerConfig.ts";
 import type {Response, Request} from "express";
+import {router as authRouter} from "./routers/auth-router.ts";
 import cors from "cors";
 
 const app = express();
@@ -21,7 +22,7 @@ app.get("/", (req: Request, res: Response) => {
 })
 app.use(express.json());
 app.use(cors());
-
+app.use("/auth", authRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.listen(3000, () => {
