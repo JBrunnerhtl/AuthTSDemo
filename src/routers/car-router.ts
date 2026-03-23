@@ -2,6 +2,7 @@ import {Router} from "express";
 import type {Request, Response} from "express";
 import {StatusCodes} from "http-status-codes";
 import {cars} from "../data/data.ts";
+import {isAdmin, isAuthenticated} from "../middleware/auth-handler.ts";
 
 export const carRouter: Router = Router();
 
@@ -11,7 +12,7 @@ carRouter.get("/cars", (req: Request, res: Response) => {
 })
 
 
-carRouter.get("/car/:index", (req: Request, res: Response) => {
+carRouter.get("/car/:index",isAuthenticated, isAdmin, (req: Request, res: Response) => {
     const {index }  = req.params;
     try {
         if(index == undefined || typeof index !== "string") throw new Error("Car doesn't exist");

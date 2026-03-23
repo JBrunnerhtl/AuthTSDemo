@@ -1,5 +1,5 @@
 @URL = http://localhost:3000
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4ifSwiZXhwIjoxNzc0MjkyNjgxLjA3OCwiaWF0IjoxNzc0MjkxNzgxfQ.n8WFC_kbZgreBQcRmKAoCArTZod6gc4P673U1gNxyC0
 POST {{URL}}/auth/login
 content-type: application/json
 
@@ -7,3 +7,17 @@ content-type: application/json
     "email": "test@gmail.com",
     "password": "test"
 }
+
+###
+
+GET {{URL}}/api-cars/cars
+
+###
+
+GET {{URL}}/api-cars/car/1
+Authorization: Bearer {{token}}
+
+###
+
+GET {{URL}}/api-cars/car/999
+

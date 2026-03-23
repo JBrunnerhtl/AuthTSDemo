@@ -18,7 +18,7 @@ const users: UserCredentials[] = [
     {
         email: "test@gmail.com",
         password: bcrypt.hashSync("test", 10),
-        role: "user"
+        role: "admin"
     },
     {
         email: "test1@gmail.com",
